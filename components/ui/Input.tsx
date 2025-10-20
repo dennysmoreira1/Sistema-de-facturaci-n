@@ -1,6 +1,7 @@
 'use client'
 
 interface InputProps {
+    name?: string
     type?: string
     placeholder?: string
     value: string
@@ -10,9 +11,13 @@ interface InputProps {
     className?: string
     required?: boolean
     disabled?: boolean
+    min?: string
+    max?: string
+    step?: string
 }
 
 export function Input({
+    name,
     type = 'text',
     placeholder = '',
     value,
@@ -22,6 +27,9 @@ export function Input({
     className = '',
     required = false,
     disabled = false,
+    min,
+    max,
+    step,
 }: InputProps) {
     return (
         <div className="w-full">
@@ -32,12 +40,16 @@ export function Input({
                     </span>
                 )}
                 <input
+                    name={name}
                     type={type}
                     placeholder={placeholder}
                     value={value}
                     onChange={onChange}
                     required={required}
                     disabled={disabled}
+                    min={min}
+                    max={max}
+                    step={step}
                     className={`
             w-full 
             ${icon ? 'pl-12 pr-4' : 'px-4'} 
